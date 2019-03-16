@@ -3,4 +3,4 @@
 
 ## 목차 :book:
 
-[Call_Stack&Primitive_Types](./Call_Stack&Primitive_Types)
+1. [Call_Stack&Primitive_Types](./Call_Stack&Primitive_Types)
