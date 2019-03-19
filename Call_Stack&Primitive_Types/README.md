@@ -2,5 +2,4 @@
 
 ## 1. Call_Stack&Primitive_Types
 
-### 1.1 함수형 프로그래밍 그거 먹는 건가요?
 + [Call_Stack&Primitive_Types](./Call_Stack&Primitive_Types.md)
