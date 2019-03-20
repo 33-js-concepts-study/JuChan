@@ -2,7 +2,7 @@
 
 1. javascript의 가장 큰 특징중의 하나는 single-threaded 언어라는 점이다.
 
-   javascript의 엔진은 한 번에 한 가지 일밖에 하지 못한다!! **단일** 호출스택을 갖고 있다.
+   javascript의 엔진은 한 번에 한 가지 일밖에 하지 못한다. 즉, **단일** 호출스택을 갖고 있다.
 
    ![javscript engine](https://hudi.kr/wp-content/uploads/2018/03/%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C1.png)
 
@@ -12,7 +12,8 @@
 
    ### Run Time
 
-   - 자바스크립트의 엔진은 브라우저가 제공하는 웹 API, DOM, AJAX, `SetTimeout` 을 사용한다.
+   - 자바스크립트의 엔진은 브라우저가 제공하는 웹 API 즉, DOM, AJAX, `SetTimeout` 을 사용한다.
+     - API(application programming interface) - API는 클라이언트가 원하는 요청을 시스템에 전달하고, 응답을 다시 전달해주는 메신저이다 (참고: https://www.youtube.com/watch?v=s7wmiS2mSXY)
    - 이벤트루프와 콜백큐(다음 시간에)
 
    ![RunTime](https://cdn-images-1.medium.com/max/2000/1*i9nTlOSPH3q-sCd5-WHg-g.png)
@@ -33,10 +34,12 @@
    function multiply(x, y) {
        return x * y;
    }
+   
    function printSquare(x) {
        var s = multiply(x, x);
        console.log(s);
    }
+   
    printSquare(5);
    ```
 
@@ -59,32 +62,34 @@ function bar(x) {
 console.log(bar(6));
 ```
 
+
+
 ####2. asynchronous example
 
 ```javascript
-const sec = 4000;
+const sec = 3000;
 
-function callFirst() {
+function callMe() {
   setTimeout(function timeout() {
     console.log('hi');
-    callSecond();
+    foo();
   }, sec);
 }
 
-function callSecond() {
+function foo() {
   setTimeout(function timeout() {
-    console.log('my name is');
-    callThird();
+    bar();
+    console.log('solomon!!');
   }, sec);
 }
 
-function callThird() {
+function bar() {
   setTimeout(function timeout() {
     console.log('juchan!!');
   }, sec);
 }
 
-callFirst();
+callMe();
 /*
 visualize code
 
@@ -109,9 +114,41 @@ function second() {
   }, 999)
 }
 
-first()
-second()
+first();
+second();
 ```
+
+
+
+#### 4. My Question
+
+```javascript
+for (var i = 0; i < 5; i++) {
+  setTimeout(function timeout() {
+    console.log(i)
+  }, 0)
+}
+//결과 값?
+```
+
+
+
+
+
+##결론
+
+#### - 자바스크립트는 싱글 쓰레드 기반의 언어이다. 
+
+#### - 자바스크립트 엔진은 V8 엔진만으로 구동되는 것이 아니라 웹 API, Call Back Que, eventloop와의 상호작용을 한다. 
+
+#### - 호출 스택은 후입선출의 구조이다.
+
+#### - 함수가 호출되는 시점에서 스택에 쌓이고 함수가 반환될때 스택에서 삭제된다
+
+
+
+
+
 
 
 
@@ -127,9 +164,11 @@ second()
 
 
 
+---
 
+---
 
-# Primitive Type
+# Primitive Type (원시 값)
 
 ECMAScript 표준은 다음과 같은 7개의 자료형을 정의한다
 
@@ -144,6 +183,20 @@ ECMAScript 표준은 다음과 같은 7개의 자료형을 정의한다
 
 
 오브젝트를 제외한 모든 값은 **변경 불가능한 값(immutable value)**이다. 예를 들면, 특히 C언어와는 다르게도, 문자열은 불변값이다. 이런 값을 "primitive values"라고 한다. 
+
+
+
+### Reference Type (참조 값)
+
+- 메모리에 저장된 객체(Object)
+
+> ### 원시 값
+
+![원시 값](https://img1.daumcdn.net/thumb/R1920x0/?fname=http%3A%2F%2Fcfile4.uf.tistory.com%2Fimage%2F257AD63E577DA98E3A8316)
+
+> ### 참조 값
+
+![참조 값](https://img1.daumcdn.net/thumb/R1920x0/?fname=http%3A%2F%2Fcfile24.uf.tistory.com%2Fimage%2F244BBF44577DA9B42EBB1A)
 
 
 
@@ -167,8 +220,6 @@ _-_ **Null** 타입은 딱 한 가지 값, `null`을 가질 수 있다. `null`�
 foo;
 "null"
 ```
-
-
 
 
 
@@ -196,7 +247,7 @@ _-_ 값을 할당하지 않은 변수는 `undefined` 값을 가진다.
 typeof null          // "object" (not "null" for legacy reasons) 객체로 취급된다. 
 typeof undefined     // "undefined"
 null === undefined   // false
-null  == undefined   // true
+null == undefined   // true
 null === null        // true
 null == null         // true
 !null                // true
@@ -242,3 +293,9 @@ C 같은 언어와는 다르게, 자바스크립트의 문자열은 변경 불�
 규칙만 잘 정의해놓는다면, 어떤 자료구조가 되던 문자열로 표시할 수 있다. 그렇다고 해서 이게 좋은 방법이 되는 건 아니다. 예를 들면, 구분자로 리스트 자료형을 흉내낼 수 있을 것이다.(하지만 자바스크립트의 배열을 사용하는게 더 알맞을 것이다.). 불행하게도, 리스트의 요소중에 구분자가 들어있는 요소가 있따면 리스트는 엉망진창이 될 것이다. 물론 탈출 문자(escape character) 등을 사용하거나 할 수도 있을 것이다. 하지만 이런 것들은 모두 미리 정해놓은 규칙을 필요로 하고, 덕분에 불필요한 관리 부담을 낳는다.
 
 문자열은 텍스트 데이터에만 사용하자. 복잡한  데이터를 나타낼때는, 문자열을 분석해서 적합한 추상화를 선택해 사용하자.
+
+
+> 추가로 알아두면 좋은 개념들
+>
+> - 자바스크립트 - 실행 컨텍스트와 스코프
+>   - (참조 : https://blog.sonim1.com/135)
