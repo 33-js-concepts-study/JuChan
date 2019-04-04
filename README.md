@@ -9,3 +9,5 @@
 4. [Coercion_in_Javascript](./Coercion_in_Javascript/Coercion_in_Javascript.md)
 5. [== vs === vs typeof](./==_vs_===_vs_typeof/==_vs_===_vs_typeof.md)
 6. [Function Scope, Block Scope and Lexical Scope](./Function_Scope_Block_Scope_and_Lexical_Scope/Function_Scope_Block_Scope_and_Lexical_Scope.md)
+7. [Expression vs Statement](./Expression_vs_Statement/Expression_vs_Statement.md)
+8. [IIFE, Modules and Namespaces](./IIFE_Modules_and_Namespaces/IIFE_Modules_and_Namespaces.md)
