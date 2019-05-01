@@ -37,6 +37,8 @@ public Class Person {
 
 
 
+
+
 ## 함수를 호출하는 4가지 방식
 
 > 1. 함수 호출
@@ -66,6 +68,8 @@ foo.call(bar);   // bar
 foo.apply(bar);  // bar
 foo.bind(bar)(); // bar
 ```
+
+
 
 
 
@@ -134,6 +138,26 @@ obj.foo();
 
 
 
+##### 화살표 함수 (arrow function)
+
+화살표 함수는 전역 컨텍스트에서 실행될 때 `this`를 새로 정의하지 않습니다. 대신 코드에서 바로 바깥의 함수(혹은 class)의 `this`값이 사용됩니다. 이것은 `this`를 클로저 값으로 처리하는 것과 같습니다. 따라서 다음 코드에서 `setInterval`에 전달 된 함수의 `this`는 `setInterval`을 포함한 function의 `this`와 동일한 값을 갖습니다.
+
+```js
+function Person(){
+  this.age = 0;
+
+  setInterval(() => {
+    this.age++; // |this|는 person 객체를 '뙇' 하고 참조
+  }, 1000);
+}
+
+var p = new Person();
+```
+
+
+
+
+
 ### 2. 메소드 호출
 
 함수가 객체의 프로퍼티 값이면 메소드로서 호출된다. 이때 메소드 내부의 `this`는 해당 메소드를 소유한 객체, 즉 해당 메소드를 호출한 객체에 바인딩된다.
@@ -158,6 +182,8 @@ obj2.sayName();
 
 
 
+
+
 ### 3. 생성자 함수 호출
 
 일반 함수를 호출하면 this는 전역객체에 바인딩되지만 new 연산자와 함께 생성자 함수를 호출하면 this는 생성자 함수가 암묵적으로 생성한 빈 객체에 바인딩된다.
@@ -172,6 +198,8 @@ function Person(name) {
 var me = new Person('Lee');
 console.log(me.name);
 ```
+
+
 
 
 
@@ -195,6 +223,8 @@ console.log(foo); // { name: 'name' }
 ```
 
 기억해야 할 것은 apply() 메소드를 호출하는 주체는 함수이며 apply() 메소드는 this를 특정 객체에 바인딩할 뿐 본질적인 기능은 함수 호출이라는 것이다.
+
+
 
 #### bind
 
@@ -233,6 +263,16 @@ console.log(boundGetX());
 
 
 
-### 느낀점
+### Comment
 
-> 내가 막연히 알고 있던 this의 개념은 함수를 호출 할때 자신을 감싸고 있는 객체였다. 물론 틀린 말은 아니지만, 말 그대로 막연한 생각이었다. 자바에서 this의 개념과 어떤 부분이 다른지, 자바스크립트에서 함수를 호출하는 방법에 어떤 것들이 있는지 알게되었다.
+> 내가 막연히 알고 있던 this의 개념은 함수를 호출 할때 자신을 감싸고 있는 객체였다. 물론 틀린 말은 아니지만, 1차원적인 생각이었다. 자바스크립트에서의 this는 **함수를 호출하는 방식**에 따라 달라진다는 것이 핵심인 것 같다. 함수를 호출하는 방법에 따라 동적으로 변할 수 있다는 것, 어떻게 보면 이러한 유연성이 장점일 수도 있지만 오히려 복잡한 것 같다는 생각이 들었다. 
+
+
+
+
+
+## 참조
+
+- [함수 호출 방식에 의해 결정되는 **this**](https://poiemaweb.com/js-this)
+- [this:MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/this)
+- [화살표 함수](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/%EC%95%A0%EB%A1%9C%EC%9A%B0_%ED%8E%91%EC%85%98)
