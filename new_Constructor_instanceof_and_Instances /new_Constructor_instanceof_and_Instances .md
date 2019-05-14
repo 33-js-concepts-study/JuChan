@@ -101,4 +101,3 @@ o instanceof D;
 - [객체 지향 프로그래밍(생성자와 프로토타입)](<https://www.zerocho.com/category/JavaScript/post/573c2acf91575c17008ad2fc>)
 - [오브젝트(Object)와 인스턴스(instance),instanceof](https://webclub.tistory.com/37)
 - [instanceof: MDN](<https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/instanceof>)
-
