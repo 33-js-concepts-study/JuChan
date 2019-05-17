@@ -94,6 +94,8 @@ o instanceof D;
 
 
 
+
+
 ### 참조
 
 - [JavaScript For Beginners: the ‘new’ operator](https://codeburst.io/javascript-for-beginners-the-new-operator-cee35beb669e)
