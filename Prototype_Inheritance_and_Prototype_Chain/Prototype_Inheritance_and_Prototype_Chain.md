@@ -256,14 +256,6 @@ for( key in obj) {
 
 
 
-
-
-
-
-
-
-
-
 ```javascript
 Object.prototype.keys = function() {
     return Object.keys(this);
