@@ -1,4 +1,4 @@
-#4. Implicit, Explicit, Nominal, Structuring and Duck Typing
+# 4. Implicit, Explicit, Nominal, Structuring and Duck Typing
 
 
 

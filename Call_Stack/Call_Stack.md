@@ -46,7 +46,7 @@
    ![stack_img](https://cdn-images-1.medium.com/max/2000/1*1FL2WcODqRrK40rrzA5QQA.png)
 
 
-####1. synchronous example 
+#### 1. synchronous example 
 
 ```javascript
 function foo(b) {
@@ -64,7 +64,7 @@ console.log(bar(6));
 
 
 
-####2. asynchronous example
+#### 2. asynchronous example
 
 ```javascript
 const sec = 3000;
@@ -99,7 +99,7 @@ visualize code
 
 
 
-####3. asynchronous example
+#### 3. asynchronous example
 
 ```javascript
 function first() {
