@@ -1,4 +1,4 @@
-#Call Stack
+# Call Stack
 
 1. javascript의 가장 큰 특징중의 하나는 single-threaded 언어라는 점이다.
 
